@@ -13,17 +13,18 @@ function beginQuiz (){
 startQuizEl.addEventListener("click", function(){
     timer.textContent = "Time Left: " + 75;
     questionEl.textContent = "Which of the following is not a primitive data set?";
-    var button1 = document.createElement("button");
+    startQuizEl.textContent ="string"
+   
     var button2 = document.createElement("button");
     var button3 = document.createElement("button");
     var button4 = document.createElement("button");
 
-    button1.textContent = "string";
+   
     button2.textContent = "boolean";
     button3.textContent = "number";
     button4.textContent = "object";
 
-    buttonEl.appendChild(button1)
+   
     buttonEl.appendChild(button2)
     buttonEl.appendChild(button3)
     buttonEl.appendChild(button4)
