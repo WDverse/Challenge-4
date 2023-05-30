@@ -1,3 +1,9 @@
+:root{
+    --hovercolor: rgb(165, 201, 232);
+    --activecolor:  rgb(214, 228, 241);
+}
+
+
 a{
     text-decoration: none;
     background-color: rgb(133, 187, 235);
@@ -7,7 +13,12 @@ a{
 }
 
 #highscore:hover{
-    background-color: rgb(199, 223, 244)
+    background-color: var(--hovercolor);
+}
+
+
+#highscore:active{
+    background-color: var(--activecolor);
 }
 
 /* sets the property value to the main element */
@@ -42,25 +53,26 @@ button{
     width: fit-content;
     border: solid 1px black;
     box-shadow: 0px 1px 0px grey;
+    font-size: medium;
 }
 
 .option:hover{
-    background-color: rgb(165, 201, 232);
+    background-color: var(--hovercolor);
 
 }
 
 .option:active{
-    background-color: rgb(214, 228, 241) ;
+    background-color: var(--activecolor) ;
 
 }
 
 
 #start-quiz:hover{
-    background-color:  rgb(165, 201, 232);
+    background-color:  var(--hovercolor);
 }
 
 #start-quiz:active{
-    background-color: rgb(214, 228, 241);
+    background-color: var(--activecolor);
 
 }
 /* sets the property value to element with id="instructions */
