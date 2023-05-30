@@ -1,5 +1,5 @@
 
-
+/* sets the property values to the button elements */
 button{
     cursor: pointer;
     border-radius: 10px;
@@ -8,19 +8,25 @@ button{
     background-color: rgb(133, 187, 235);
 }
 
-header{
-    justify-items:space-between;
-}
+/* sets the property value to the main element */
 
 main{
     text-align: center;
 }
+
+/* sets the property value to elements with id="buttons */
 
 #buttons{
     display: flex;
     flex-direction: column;
     width: fit-content;
     margin: auto;
+}
+
+
+/* sets the property value to element with id="instructions */
+#instructions{
+    font-size: 20px;
 }
 
 

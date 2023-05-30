@@ -5,12 +5,14 @@ var finalScore = 0;
 var buttonEl = document.getElementById("buttons");
 var questionEl = document.querySelector ("#question");
 var instrucionsEl = document.querySelector ("#instructions");
-var currentQuestion = 0;
+var headingEl = document.querySelector ("#heading");
+var quizEl = document.querySelector ("#quiz-screen");
 
 
+//Adds a click event listener to the "Start Quiz" button
 startQuizEl.addEventListener("click", startQuiz)
 
-
+// Sets an object with properties containing questions, choices, and the answers
 var questions = [
 
     {
@@ -32,7 +34,7 @@ var questions = [
     },
 
     {
-        title: 'Which of the following are used when invoking a function?',
+        title: 'Which of the following is used when invoking a function?',
         choices: ['1. quotes', '2. curly brackets', '3. parentheses', '4. square brackets'],
         answer: '5. parentheses',
     },
@@ -43,40 +45,54 @@ var questions = [
         answer: '3. objects',
     },
 ];
-
+// Declares a variable called index 
 var index = -1
 
-    function nextQuestion (){
-        index ++
-        questionEl.textContent = questions[index].title;
-        var previousButtons = document.querySelectorAll(".option")
-        if (previousButtons){
-            for (var i = 0; i < previousButtons.length; i++){
-                previousButtons[i].style = "display: none";
-            }
+// Displays new quetion when a button is clicked
+function nextQuestion (){
+    index ++
+    questionEl.textContent = questions[index].title;
+    var previousButtons = document.querySelectorAll(".option")
+    if (previousButtons){
+        for (var i = 0; i < previousButtons.length; i++){
+            previousButtons[i].style = "display: none";
         }
-    
-        for (var i = 0; i < questions[index].choices.length; i++) {
-            var newButtonEl =  document.createElement('button');
-            var choice = questions[index].choices[i];
-            newButtonEl.textContent = choice;
-            newButtonEl.classList.add("option")
-            buttonEl.appendChild(newButtonEl)
-            newButtonEl.addEventListener("click", nextQuestion)
-        }} 
+    }
+// Displays new buttons with possible answers when a button is clicked
 
-    function startQuiz(){
+    for (var i = 0; i < questions[index].choices.length; i++) {
+        var newButtonEl =  document.createElement('button');
+        var choice = questions[index].choices[i];
+        newButtonEl.textContent = choice;
+        newButtonEl.classList.add("option")
+        buttonEl.appendChild(newButtonEl)
+        newButtonEl.addEventListener("click", nextQuestion)
+    }
+} 
+
+function startQuiz(){
+    timerEl.textContent = "Time Left: " + timer;
+    nextQuestion();
+    startQuizEl.setAttribute("style", "display: none");
+    instrucionsEl.setAttribute("style", "display: none");
+    var timerInterval = setInterval(function () {
+        timer--;
         timerEl.textContent = "Time Left: " + timer;
-        nextQuestion();
-        startQuizEl.setAttribute("style", "display: none");
-        instrucionsEl.setAttribute("style", "display: none");
-        var timerInterval = setInterval(function(){
-            timer--;
-            if(questions.choices !== questions.answer){
-                timer
-            }
-        }, 1000)
-
+    
+        if (timer <= 0) {
+            clearInterval(timerInterval);
+            
+            //Handles time's up scenario
+            timerEl.textContent = "";
+            quizEl.setAttribute("style", "display: none");
+            headingEl.textContent = "All done!";
+            var initialsEl = document.createElement("p");
+            initialsEl.textContent = "Enter your initials";
+            headingEl.appendChild(initialsEl);
+            var inputEl = document.createElement("input");
+            headingEl.appendChild(inputEl);
+        }
+        }, 1000);
     }
     
         
