@@ -1,8 +1,10 @@
+
+
 button{
     cursor: pointer;
     border-radius: 10px;
     box-shadow: none;
-    display: block;
+    display: inline-block;
     background-color: rgb(133, 187, 235);
 }
 
@@ -15,5 +17,10 @@ main{
 }
 
 #buttons{
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
 }
+
+

@@ -1,86 +1,87 @@
 var startQuizEl = document.querySelector("#start-quiz");
 var timerEl = document.querySelector("#timer");
-var timer =0;
+var timer =75;
 var finalScore = 0;
 var buttonEl = document.getElementById("buttons");
 var questionEl = document.querySelector ("#question");
+var instrucionsEl = document.querySelector ("#instructions");
 var currentQuestion = 0;
 
 
-timerEl.textContent = "Time Left: " + timer;
+startQuizEl.addEventListener("click", startQuiz)
 
-startQuizEl.addEventListener("click", function(){
 
-    // timerEl.textContent = "Time Left: " + 75;
-    var questions = [
-        {
-          title: 'Commonly used data types DO NOT include:',
-          choices: ['strings', 'booleans', 'alerts', 'numbers'],
-          answer: 'alerts',
-        },
+var questions = [
 
-        {
-          title: 'The condition in an if / else statement is enclosed within ____.',
-          choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
-          answer: 'parentheses',
-        },
-        
-        {
-          title: 'Which of the following is not a primitive data set?',
-          choices: ['boolean', 'number', 'object', 'string'],
-          answer: 'string',
-        },
+    {
+        title: 'Commonly used data types DO NOT include:',
+        choices: ['1. strings', '2. booleans', '3. alerts', '4. numbers'],
+        answer: '3. alerts',
+    },
 
-        {
-          title: 'Which of the following are used when invoking a function?',
-          choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
-          answer: 'parentheses',
-        },
-
-        {  
-          title: 'Complex data types include:',
-          choices: ['strings', 'booleans', 'objects', 'numbers'],
-          answer: 'objects',
-        },
-    ];
+    {
+        title: 'The condition in an if / else statement is enclosed within ____.',
+        choices: ['1. quotes', '2. curly brackets', '3. parentheses', '4. square brackets'],
+        answer: '5. parentheses',
+    },
     
-    for (var i = 0; i < questions[0].choices.length; i++) {
-        var newButtonEl =  document.createElement('button');
-        var choice = questions[0].choices[i];
-        newButtonEl.textContent = choice;
-        buttonEl.appendChild(newButtonEl);
-    } 
-    for (var i = 0; i < questions[1].choices.length; i++) {
-        var newButtonEl =  document.createElement('button');
-        var choice = questions[1].choices[i];
-        newButtonEl.textContent = choice;
-        buttonEl.appendChild(newButtonEl);
-    } 
-    for (var i = 0; i < questions[2].choices.length; i++) {
-        var newButtonEl =  document.createElement('button');
-        var choice = questions[2].choices[i];
-        newButtonEl.textContent = choice;
-        buttonEl.appendChild(newButtonEl);
-    } 
-    for (var i = 0; i < questions[3].choices.length; i++) {
-        var newButtonEl =  document.createElement('button');
-        var choice = questions[3].choices[i];
-        newButtonEl.textContent = choice;
-        buttonEl.appendChild(newButtonEl);
-    } 
-    for (var i = 0; i < questions[4].choices.length; i++) {
-        var newButtonEl =  document.createElement('button');
-        var choice = questions[4].choices[i];
-        newButtonEl.textContent = choice;
-        buttonEl.appendChild(newButtonEl);
-    } 
+    {
+        title: 'Which of the following is not a primitive data set?',
+        choices: ['1. boolean', '2. number', '3. object', '4. string'],
+        answer: '4. string',
+    },
 
-    for (var i = 0; i < questions[0].title; i++) {
-      questionEl.textContent = questions[0].title;
+    {
+        title: 'Which of the following are used when invoking a function?',
+        choices: ['1. quotes', '2. curly brackets', '3. parentheses', '4. square brackets'],
+        answer: '5. parentheses',
+    },
+
+    {  
+        title: 'Complex data types include:',
+        choices: ['1. strings', '2. booleans', '3. objects', '4. numbers'],
+        answer: '3. objects',
+    },
+];
+
+var index = -1
+
+    function nextQuestion (){
+        index ++
+        questionEl.textContent = questions[index].title;
+        var previousButtons = document.querySelectorAll(".option")
+        if (previousButtons){
+            for (var i = 0; i < previousButtons.length; i++){
+                previousButtons[i].style = "display: none";
+            }
+        }
+    
+        for (var i = 0; i < questions[index].choices.length; i++) {
+            var newButtonEl =  document.createElement('button');
+            var choice = questions[index].choices[i];
+            newButtonEl.textContent = choice;
+            newButtonEl.classList.add("option")
+            buttonEl.appendChild(newButtonEl)
+            newButtonEl.addEventListener("click", nextQuestion)
+        }} 
+
+    function startQuiz(){
+        timerEl.textContent = "Time Left: " + timer;
+        nextQuestion();
+        startQuizEl.setAttribute("style", "display: none");
+        instrucionsEl.setAttribute("style", "display: none");
+        var timerInterval = setInterval(function(){
+            timer--;
+            if(questions.choices !== questions.answer){
+                timer
+            }
+        }, 1000)
+
     }
+    
         
     
-});
+
     
 
 
