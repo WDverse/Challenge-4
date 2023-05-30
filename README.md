@@ -20,7 +20,7 @@ To use this webpage, click on the "Start Quiz" button. When the buttton is click
 It should be noted the the webpage does not work as intended due to incompletion of the code.
 
 The following image shows the web application's appearance and functionality:
-![The Code Quiz Challenge webpage includes a heading, a timer, instructions and a button.](./assets/images/screenshot.png)
+![The Code Quiz Challenge webpage includes a heading, a timer, instructions and a button.](./Assets/images/screenshot.png)
 
 ## Credits
 
