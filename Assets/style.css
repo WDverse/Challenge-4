@@ -1,0 +1,19 @@
+button{
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: none;
+    display: block;
+    background-color: rgb(133, 187, 235);
+}
+
+header{
+    justify-items:space-between;
+}
+
+main{
+    text-align: center;
+}
+
+#buttons{
+    align-items: center;
+}

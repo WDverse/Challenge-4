@@ -10,6 +10,7 @@ var currentQuestion = 0;
 timerEl.textContent = "Time Left: " + timer;
 
 startQuizEl.addEventListener("click", function(){
+
     // timerEl.textContent = "Time Left: " + 75;
     var questions = [
         {
@@ -23,36 +24,63 @@ startQuizEl.addEventListener("click", function(){
           choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
           answer: 'parentheses',
         },
+        
         {
           title: 'Which of the following is not a primitive data set?',
           choices: ['boolean', 'number', 'object', 'string'],
           answer: 'string',
         },
-    ]
-    ;
 
+        {
+          title: 'Which of the following are used when invoking a function?',
+          choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
+          answer: 'parentheses',
+        },
+
+        {  
+          title: 'Complex data types include:',
+          choices: ['strings', 'booleans', 'objects', 'numbers'],
+          answer: 'objects',
+        },
+    ];
+    
     for (var i = 0; i < questions[0].choices.length; i++) {
-        var buttonEl =  document.createElement('button');
+        var newButtonEl =  document.createElement('button');
         var choice = questions[0].choices[i];
-        buttonEl.textContent = choice;
+        newButtonEl.textContent = choice;
+        buttonEl.appendChild(newButtonEl);
     } 
+    for (var i = 0; i < questions[1].choices.length; i++) {
+        var newButtonEl =  document.createElement('button');
+        var choice = questions[1].choices[i];
+        newButtonEl.textContent = choice;
+        buttonEl.appendChild(newButtonEl);
+    } 
+    for (var i = 0; i < questions[2].choices.length; i++) {
+        var newButtonEl =  document.createElement('button');
+        var choice = questions[2].choices[i];
+        newButtonEl.textContent = choice;
+        buttonEl.appendChild(newButtonEl);
+    } 
+    for (var i = 0; i < questions[3].choices.length; i++) {
+        var newButtonEl =  document.createElement('button');
+        var choice = questions[3].choices[i];
+        newButtonEl.textContent = choice;
+        buttonEl.appendChild(newButtonEl);
+    } 
+    for (var i = 0; i < questions[4].choices.length; i++) {
+        var newButtonEl =  document.createElement('button');
+        var choice = questions[4].choices[i];
+        newButtonEl.textContent = choice;
+        buttonEl.appendChild(newButtonEl);
+    } 
+
+    for (var i = 0; i < questions[0].title; i++) {
+      questionEl.textContent = questions[0].title;
+    }
+        
     
 });
     
-    // questionEl.textContent = "Which of the following is not a primitive data set?";
-    // startQuizEl.textContent ="string"
-   
-    // var button2 = document.createElement("button");
-    // var button3 = document.createElement("button");
-    // var button4 = document.createElement("button");
 
-   
-    // button2.textContent = "boolean";
-    // button3.textContent = "number";
-    // button4.textContent = "object";
-
-   
-    // buttonEl.appendChild(button2)
-    // buttonEl.appendChild(button3)
-    // buttonEl.appendChild(button4)
 
