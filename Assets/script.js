@@ -1,12 +1,12 @@
 var startQuizEl = document.querySelector("#start-quiz");
 var timerEl = document.querySelector("#timer");
-var timer =75;
+var timer = 75;
 var finalScore = 0;
 var buttonEl = document.getElementById("buttons");
-var questionEl = document.querySelector ("#question");
-var instrucionsEl = document.querySelector ("#instructions");
-var headingEl = document.querySelector ("#heading");
-var quizEl = document.querySelector ("#quiz-screen");
+var questionEl = document.querySelector("#question");
+var instrucionsEl = document.querySelector("#instructions");
+var headingEl = document.querySelector("#heading");
+var quizEl = document.querySelector("#quiz-screen");
 
 
 //Adds a click event listener to the "Start Quiz" button
@@ -17,60 +17,60 @@ var questions = [
 
     {
         title: 'Commonly used data types DO NOT include:',
-        choices: ['1. strings', '2. booleans', '3. alerts', '4. numbers'],
-        answer: '3. alerts',
+        choices: ['1. alerts', '2. strings', '3. booleans', '4. numbers'],
+        answer: '1. alerts',
     },
 
     {
         title: 'The condition in an if / else statement is enclosed within ____.',
         choices: ['1. quotes', '2. curly brackets', '3. parentheses', '4. square brackets'],
-        answer: '5. parentheses',
+        answer: '3. parentheses',
     },
-    
+
     {
         title: 'Which of the following is not a primitive data set?',
-        choices: ['1. boolean', '2. number', '3. object', '4. string'],
-        answer: '4. string',
+        choices: ['1. boolean', '2. object', '3. number', '4. string'],
+        answer: '2. object',
     },
 
     {
         title: 'Which of the following is used when invoking a function?',
-        choices: ['1. quotes', '2. curly brackets', '3. parentheses', '4. square brackets'],
-        answer: '5. parentheses',
+        choices: ['1. quotes', '2. curly brackets', '3. square brackets', '4. parentheses'],
+        answer: '4. parentheses',
     },
 
-    {  
+    {
         title: 'Complex data types include:',
-        choices: ['1. strings', '2. booleans', '3. arrays', '4. numbers'],
-        answer: '3. arrays',
+        choices: ['1. arrays', '2. strings', '3. booleans', '4. numbers'],
+        answer: '1. arrays',
     },
 ];
 // Declares a variable called index 
 var index = -1
 
 // Displays new quetion when a button is clicked
-function nextQuestion (){
-    index ++
+function nextQuestion() {
+    index++
     questionEl.textContent = questions[index].title;
     var previousButtons = document.querySelectorAll(".option")
-    if (previousButtons){
-        for (var i = 0; i < previousButtons.length; i++){
+    if (previousButtons) {
+        for (var i = 0; i < previousButtons.length; i++) {
             previousButtons[i].style = "display: none";
         }
     }
-// Displays new buttons with possible answers when a button is clicked
+    // Displays new buttons with possible answers when a button is clicked
 
     for (var i = 0; i < questions[index].choices.length; i++) {
-        var newButtonEl =  document.createElement('button');
+        var newButtonEl = document.createElement('button');
         var choice = questions[index].choices[i];
         newButtonEl.textContent = choice;
         newButtonEl.classList.add("option")
         buttonEl.appendChild(newButtonEl)
         newButtonEl.addEventListener("click", nextQuestion)
     }
-} 
+}
 
-function startQuiz(){
+function startQuiz() {
     timerEl.textContent = "Time Left: " + timer;
     nextQuestion();
     startQuizEl.setAttribute("style", "display: none");
@@ -78,10 +78,10 @@ function startQuiz(){
     var timerInterval = setInterval(function () {
         timer--;
         timerEl.textContent = "Time Left: " + timer;
-    
+
         if (timer <= 0) {
             clearInterval(timerInterval);
-            
+
             //Handles time's up scenario
             timerEl.textContent = "";
             quizEl.setAttribute("style", "display: none");
@@ -92,12 +92,12 @@ function startQuiz(){
             var inputEl = document.createElement("input");
             headingEl.appendChild(inputEl);
         }
-        }, 1000);
-    }
-    
-        
-    
+    }, 1000);
+}
 
-    
+
+
+
+
 
 
