@@ -1,7 +1,7 @@
 a{
     text-decoration: none;
     background-color: rgb(133, 187, 235);
-    border: solid black;
+    border: solid 1px black;
     border-radius: 4px;
     color: black;
 }
