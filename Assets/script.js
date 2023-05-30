@@ -41,8 +41,8 @@ var questions = [
 
     {  
         title: 'Complex data types include:',
-        choices: ['1. strings', '2. booleans', '3. objects', '4. numbers'],
-        answer: '3. objects',
+        choices: ['1. strings', '2. booleans', '3. arrays', '4. numbers'],
+        answer: '3. arrays',
     },
 ];
 // Declares a variable called index 
