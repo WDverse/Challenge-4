@@ -1,3 +1,19 @@
+a{
+    text-decoration: none;
+    background-color: rgb(133, 187, 235);
+    border: solid black;
+    border-radius: 4px;
+    color: black;
+}
+
+
+/* sets the property value to the main element */
+
+main{
+    text-align: center;
+}
+
+
 
 /* sets the property values to the button elements */
 button{
@@ -8,11 +24,6 @@ button{
     background-color: rgb(133, 187, 235);
 }
 
-/* sets the property value to the main element */
-
-main{
-    text-align: center;
-}
 
 /* sets the property value to elements with id="buttons */
 
