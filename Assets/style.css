@@ -34,6 +34,9 @@ button{
     margin: auto;
 }
 
+.option{
+    margin-top: 3px;
+}
 
 /* sets the property value to element with id="instructions */
 #instructions{
