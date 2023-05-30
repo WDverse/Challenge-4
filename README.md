@@ -38,4 +38,4 @@ N/A
 
 
 Here is the link to the webpage:
-[Code Quiz Challenege](https://wdverse.github.io/Code-Quiz-Challenege/)
+[Code Quiz Challenege](https://wdverse.github.io/Code-Quiz-Challenge/)
