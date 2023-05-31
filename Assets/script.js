@@ -47,11 +47,25 @@ var questions = [
     },
 ];
 // Declares a variable called index 
-var index = -1
-
+var index = 0
+function checkQuestion(event){
+    console.log(event.target);
+    var currentQuestion = questions[index]
+    
+        if(event.target.textContent === currentQuestion.answer){
+            resultsEl.textContent = "Correct!";
+        }
+        if(event.target.textContent !== currentQuestion.answer){
+            resultsEl.textContent = "Wrong!";
+            timer = timer - 10;
+            timerEl.textContent = "Time Left: " + timer;
+        }
+    
+    index++;
+    nextQuestion();
+}
 // Displays new quetion when a button is clicked
 function nextQuestion() {
-    index++
     questionEl.textContent = questions[index].title;
     var previousButtons = document.querySelectorAll(".option")
     if (previousButtons) {
@@ -59,6 +73,7 @@ function nextQuestion() {
             previousButtons[i].style = "display: none";
         }
     }
+    buttonEl.innerHTML = '';
     // Displays new buttons with possible answers when a button is clicked
     for (var i = 0; i < questions[index].choices.length; i++) {
         var newButtonEl = document.createElement('button');
@@ -66,19 +81,9 @@ function nextQuestion() {
         newButtonEl.textContent = choice;
         newButtonEl.classList.add("option")
         buttonEl.appendChild(newButtonEl)
-        newButtonEl.addEventListener("click", nextQuestion)
+        newButtonEl.addEventListener("click", checkQuestion)
     }
 
-    // for(var i = 0; i < questions[index].choices.length; i++){
-
-    //     if(questions.answer){
-    //         resultsEl.textContent = "Correct!";
-    //     }
-    //     if(!questions.answer){
-    //         resultsEl.textContent = "Wrong!";
-    //         timer - 10;
-    //     }
-    // }
 }
 
 function startQuiz() {
