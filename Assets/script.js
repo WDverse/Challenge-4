@@ -15,7 +15,6 @@ startQuizEl.addEventListener("click", startQuiz)
 
 // Sets an object with properties containing questions, choices, and the answers
 var questions = [
-
     {
         title: 'Commonly used data types DO NOT include:',
         choices: ['1. alerts', '2. strings', '3. booleans', '4. numbers'],
