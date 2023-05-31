@@ -7,6 +7,7 @@ var questionEl = document.querySelector("#question");
 var instrucionsEl = document.querySelector("#instructions");
 var headingEl = document.querySelector("#heading");
 var quizEl = document.querySelector("#quiz-screen");
+var resultsEl = document.querySelector("#results");
 
 
 //Adds a click event listener to the "Start Quiz" button
@@ -59,7 +60,6 @@ function nextQuestion() {
         }
     }
     // Displays new buttons with possible answers when a button is clicked
-
     for (var i = 0; i < questions[index].choices.length; i++) {
         var newButtonEl = document.createElement('button');
         var choice = questions[index].choices[i];
@@ -68,6 +68,17 @@ function nextQuestion() {
         buttonEl.appendChild(newButtonEl)
         newButtonEl.addEventListener("click", nextQuestion)
     }
+
+    // for(var i = 0; i < questions[index].choices.length; i++){
+
+    //     if(questions.answer){
+    //         resultsEl.textContent = "Correct!";
+    //     }
+    //     if(!questions.answer){
+    //         resultsEl.textContent = "Wrong!";
+    //         timer - 10;
+    //     }
+    // }
 }
 
 function startQuiz() {
@@ -75,6 +86,7 @@ function startQuiz() {
     nextQuestion();
     startQuizEl.setAttribute("style", "display: none");
     instrucionsEl.setAttribute("style", "display: none");
+
     var timerInterval = setInterval(function () {
         timer--;
         timerEl.textContent = "Time Left: " + timer;
