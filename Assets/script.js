@@ -53,10 +53,13 @@ var index = 0
 function checkQuestion(event){
     console.log(event.target);
     var currentQuestion = questions[index]
-    
+
+        //Handles scenario when answer is correct
         if(event.target.textContent === currentQuestion.answer){
             resultsEl.textContent = "Correct!";
+            finalScore += 5;
         }
+        //Handles scenario when answer is wrong
         if(event.target.textContent !== currentQuestion.answer){
             resultsEl.textContent = "Wrong!";
             timer = timer - 10;
