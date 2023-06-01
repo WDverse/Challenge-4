@@ -62,6 +62,7 @@ function checkQuestion(event){
     
     index++;
     nextQuestion();
+    resultsTimer();
 }
 // Displays new quetion when a button is clicked
 function nextQuestion() {
@@ -111,7 +112,16 @@ function startQuiz() {
     }, 1000);
 }
 
-
+function resultsTimer(){
+    var resultsTimerInterval = setInterval(function (){
+        var showResults = 1;
+        showResults--;
+        if (showResults <= 0){
+            clearInterval(resultsTimerInterval);
+            resultsEl.textContent = " ";
+        }
+    }, 1000);
+}
 
 
 
