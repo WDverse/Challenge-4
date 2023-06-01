@@ -45,8 +45,11 @@ var questions = [
         answer: '1. arrays',
     },
 ];
-// Declares a variable called index 
+
+//Declares a variable which will select the objects in the "questions" array starting with the first object
 var index = 0
+
+//Prints answer results and deducts 10 seconds when answer is wrong
 function checkQuestion(event){
     console.log(event.target);
     var currentQuestion = questions[index]
@@ -74,6 +77,7 @@ function nextQuestion() {
         }
     }
     buttonEl.innerHTML = '';
+
     // Displays new buttons with possible answers when a button is clicked
     for (var i = 0; i < questions[index].choices.length; i++) {
         var newButtonEl = document.createElement('button');
@@ -86,20 +90,23 @@ function nextQuestion() {
 
 }
 
+//Removes "Start Quiz" button and instuctions when "Start Quiz" is clicked
 function startQuiz() {
     timerEl.textContent = "Time Left: " + timer;
     nextQuestion();
     startQuizEl.setAttribute("style", "display: none");
     instrucionsEl.setAttribute("style", "display: none");
 
+    //Starts timer
     var timerInterval = setInterval(function () {
         timer--;
         timerEl.textContent = "Time Left: " + timer;
 
+        //Clears timer
         if (timer <= 0) {
             clearInterval(timerInterval);
 
-            //Handles time's up scenario
+            //Handles scenario when time is up
             timerEl.textContent = "";
             quizEl.setAttribute("style", "display: none");
             headingEl.textContent = "All done!";
@@ -112,6 +119,7 @@ function startQuiz() {
     }, 1000);
 }
 
+// Displays results for one second when a choice is clicked
 function resultsTimer(){
     var resultsTimerInterval = setInterval(function (){
         var showResults = 1;
