@@ -68,9 +68,6 @@ function checkQuestion(event) {
         timer = timer - 10;
         timerEl.textContent = "Time Left: " + timer;
     }
-    // if (index === questions.length - 1) {
-    //     //stop increment HOW??????
-    // }
     index++;
     if (index === questions.length) {
         endQuiz();
@@ -118,7 +115,7 @@ function startQuiz() {
             endQuiz();
         }
     }, 1000);
-    
+
 }
 
 
