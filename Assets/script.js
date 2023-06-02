@@ -9,10 +9,7 @@ var headingEl = document.querySelector("#heading");
 var quizEl = document.querySelector("#quiz-screen");
 var resultsEl = document.querySelector("#results");
 var highScoreEl = document.getElementById("highscore");
-var timerInterval = setInterval(function () { //Declared as global
-    timer--;
-    timerEl.textContent = "Time Left: " + timer;
-}, 1000);
+
 
 
 //Adds a click event listener to the "Start Quiz" button
@@ -103,6 +100,7 @@ function nextQuestion() {
 
 }
 
+
 //Removes "Start Quiz" button and instuctions when "Start Quiz" is clicked
 function startQuiz() {
     timerEl.textContent = "Time Left: " + timer;
@@ -112,11 +110,14 @@ function startQuiz() {
     instrucionsEl.setAttribute("style", "display: none");
     highScoreEl.setAttribute("style", "display: none");
     //Starts timer 
-    timerInterval
-    //Ends timer 
-    if (timer <= 0) {
-        endQuiz;
-    }
+    var timerInterval = setInterval(function () {
+        timer--;
+        timerEl.textContent = "Time Left: " + timer;
+        if (timer <= 0) {
+            endQuiz;
+        }
+    }, 1000);
+    
 }
 
 
