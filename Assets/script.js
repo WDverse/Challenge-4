@@ -9,6 +9,7 @@ var headingEl = document.querySelector("#heading");
 var quizEl = document.querySelector("#quiz-screen");
 var resultsEl = document.querySelector("#results");
 var highScoreEl = document.getElementById("highscore");
+var timerInterval;
 
 
 
@@ -67,9 +68,9 @@ function checkQuestion(event) {
         timer = timer - 10;
         timerEl.textContent = "Time Left: " + timer;
     }
-    if (index === questions.length - 1) {
-        //stop increment HOW??????
-    }
+    // if (index === questions.length - 1) {
+    //     //stop increment HOW??????
+    // }
     index++;
     if (index === questions.length) {
         endQuiz();
@@ -110,11 +111,11 @@ function startQuiz() {
     instrucionsEl.setAttribute("style", "display: none");
     highScoreEl.setAttribute("style", "display: none");
     //Starts timer 
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         timer--;
         timerEl.textContent = "Time Left: " + timer;
         if (timer <= 0) {
-            endQuiz;
+            endQuiz();
         }
     }, 1000);
     
