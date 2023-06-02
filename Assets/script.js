@@ -125,9 +125,9 @@ function startQuiz() {
 // Displays results for one second when a choice is clicked
 function resultsTimer(){
     var resultsTimerInterval = setInterval(function (){
-        var showResults = 1;
-        showResults--;
-        if (showResults <= 0){
+        var displayResultsTimer = 1;
+        displayResultsTimer--;
+        if (displayResultsTimer <= 0){
             clearInterval(resultsTimerInterval);
             resultsEl.textContent = " ";
         }
