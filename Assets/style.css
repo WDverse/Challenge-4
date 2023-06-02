@@ -92,6 +92,7 @@ button:active{
 
 label{
     font-size: medium;
+    font-weight: bolder;
 }
 
 li {

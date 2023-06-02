@@ -22,32 +22,32 @@ startQuizEl.addEventListener("click", startQuiz)
 var questions = [
     {
         title: 'Commonly used data types DO NOT include:',
-        choices: ['1. alerts', '2. strings', '3. booleans', '4. numbers'],
-        answer: '1. alerts',
+        choices: ['A. alerts', 'B. strings', 'C. booleans', 'D. numbers'],
+        answer: 'A. alerts',
     },
 
     {
         title: 'The condition in an if / else statement is enclosed within ____.',
-        choices: ['1. quotes', '2. curly brackets', '3. parentheses', '4. square brackets'],
-        answer: '3. parentheses',
+        choices: ['A. quotes', 'B. curly brackets', 'C. parentheses', 'D. square brackets'],
+        answer: 'C. parentheses',
     },
 
     {
         title: 'Which of the following is not a primitive data set?',
-        choices: ['1. boolean', '2. object', '3. number', '4. string'],
-        answer: '2. object',
+        choices: ['A. boolean', 'B. object', 'C. number', 'D. string'],
+        answer: 'B. object',
     },
 
     {
         title: 'Which of the following is used when invoking a function?',
-        choices: ['1. quotes', '2. curly brackets', '3. square brackets', '4. parentheses'],
-        answer: '4. parentheses',
+        choices: ['A. quotes', 'B. curly brackets', 'C. square brackets', 'D. parentheses'],
+        answer: 'D. parentheses',
     },
 
     {
         title: 'Complex data types include:',
-        choices: ['1. arrays', '2. strings', '3. booleans', '4. numbers'],
-        answer: '1. arrays',
+        choices: ['A. arrays', 'B. strings', 'C. booleans', 'D. numbers'],
+        answer: 'A. arrays',
     },
 ];
 
