@@ -12,6 +12,8 @@ var quizEl = document.querySelector("#quiz-screen");
 var resultsEl = document.querySelector("#results");
 var highScoreEl = document.getElementById("highscore");
 var timerInterval;
+var inputEl;
+var submitButtonEl;
 
 
 //Adds a click event listener to the "Start Quiz" button
@@ -147,21 +149,28 @@ function endQuiz() {
     var initialsListEl = document.createElement("ul");
     var listEl = document.createElement("li");
     var inputLabel = document.createElement("label");
-    var inputEl = document.createElement("input");
-    var submitButton = document.createElement("button");
-    submitButton.textContent = "Submit";
-    submitButton.classList.add("submit");
-    inputLabel.textContent = "Enter your initials";
+    inputEl = document.createElement("input");
+    submitButtonEl = document.createElement("button");
+    submitButtonEl.textContent = "Submit";
     listEl.appendChild(inputLabel);
     listEl.appendChild(inputEl);
     initialsListEl.appendChild(listEl);
+    inputLabel.textContent = "Enter your initials";
     formEl.appendChild(initialsListEl);
-    formEl.appendChild(submitButton);
+    formEl.appendChild(submitButtonEl);
     saveInitialsDiv.appendChild(formEl);
     mainEl.appendChild(saveInitialsDiv);
     highScoreEl.setAttribute("style", "display: block");
 }
 
+submitButtonEl.classList.add("submit");
 
+var submitButton = document.querySelector(".submit");
+inputEl.classList.add("initials");
+var initialsInput = document.querySelector(".initials");
 
+var userInitials = {
+    initials : initialsInput.value.trim(),
+}
+localStorage.setItem("userInitials", JSON.stringify(userInitials));
 
