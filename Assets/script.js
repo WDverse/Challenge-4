@@ -160,7 +160,6 @@ function endQuiz() {
     saveInitialsDiv.appendChild(formEl);
     mainEl.appendChild(saveInitialsDiv);
     highScoreEl.setAttribute("style", "display: block");
-
 }
 
 

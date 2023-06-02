@@ -85,6 +85,9 @@ button:active{
     /* background-color: var(--backgroundcolor); */
     width: fit-content;
     margin: auto;
+    background-color:aliceblue;
+    box-shadow:rgba(60, 64, 67, 2) 0 1px 2px 0,
+    rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
 }
 
 label{
@@ -96,5 +99,11 @@ li {
 }
 
 input {
+    margin-top: 4px;
     margin-left: 10px;
+    margin-right:10px;
+}
+
+.submit{
+    margin-bottom: 4px;
 }
