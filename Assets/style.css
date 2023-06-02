@@ -95,7 +95,7 @@ label{
     font-weight: bolder;
 }
 
-li {
+.initials-list {
     list-style-type: none;
 }
 

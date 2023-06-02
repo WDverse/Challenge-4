@@ -152,6 +152,7 @@ function endQuiz() {
     formEl.classList.add("form");
     var initialsListEl = document.createElement("ul");
     var listEl = document.createElement("li");
+    listEl.classList.add("initials-list");
     var inputLabel = document.createElement("label");
     inputEl = document.createElement("input");
     inputEl.classList.add("initials");
@@ -167,23 +168,23 @@ function endQuiz() {
     saveInitialsDiv.appendChild(formEl);
     mainEl.appendChild(saveInitialsDiv);
     highScoreEl.setAttribute("style", "display: block");
-    
+
 
     var submitForm = document.querySelector(".form");
     var submitButton = document.querySelector(".submit");
     var initialsInput = document.querySelector(".initials");
-    submitButton.addEventListener("click", function(event){
+    submitButton.addEventListener("click", function (event) {
         event.preventDefault();
 
         var userInitials = {
-            initials : initialsInput.value.trim(),
+            initials: initialsInput.value.trim(),
         }
 
         localStorage.setItem("userInitials", JSON.stringify(userInitials));
-        
-        function renderHighscores (){
-            var lastScore = JSON.parse(localStorage.getItem(userInitials));
-            if (lastScore !== null){
+
+        function renderHighscores() {
+            var lastScore = JSON.parse(localStorage.getItem("userInitials"));
+            if (lastScore !== null) {
                 finalScoreEl.setAttribute("style", "display: none");
                 headingEl.setAttribute("style", "display: none");
                 submitForm.setAttribute("style", "display: none");
@@ -191,7 +192,8 @@ function endQuiz() {
                 var highScoreList = document.createElement("ol");
                 var userInitialsList = document.createElement("li");
                 highScoreHeading.textContent = "Highscores";
-                userInitialsList.textContent = lastScore.initials + finalScore;
+                userInitialsList.textContent = lastScore.initials + " - " + finalScore;
+                highScoreList.setAttribute("style", "text-align: left");
                 highScoreList.appendChild(userInitialsList);
                 saveInitialsDiv.appendChild(highScoreHeading);
                 saveInitialsDiv.appendChild(highScoreList);
