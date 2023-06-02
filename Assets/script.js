@@ -8,6 +8,11 @@ var instrucionsEl = document.querySelector("#instructions");
 var headingEl = document.querySelector("#heading");
 var quizEl = document.querySelector("#quiz-screen");
 var resultsEl = document.querySelector("#results");
+var highScoreEl = document.getElementById("highscore");
+var timerInterval = setInterval(function () { //Declared as global
+    timer--;
+    timerEl.textContent = "Time Left: " + timer;
+}, 1000);
 
 
 //Adds a click event listener to the "Start Quiz" button
@@ -50,23 +55,28 @@ var questions = [
 var index = 0
 
 //Prints answer results and deducts 10 seconds when answer is wrong
-function checkQuestion(event){
+function checkQuestion(event) {
     console.log(event.target);
     var currentQuestion = questions[index]
 
-        //Handles scenario when answer is correct
-        if(event.target.textContent === currentQuestion.answer){
-            resultsEl.textContent = "Correct!";
-            finalScore += 5;
-        }
-        //Handles scenario when answer is wrong
-        if(event.target.textContent !== currentQuestion.answer){
-            resultsEl.textContent = "Wrong!";
-            timer = timer - 10;
-            timerEl.textContent = "Time Left: " + timer;
-        }
-    
+    //Handles scenario when answer is correct
+    if (event.target.textContent === currentQuestion.answer) {
+        resultsEl.textContent = "Correct!";
+        finalScore += 5;
+    }
+    //Handles scenario when answer is wrong
+    if (event.target.textContent !== currentQuestion.answer) {
+        resultsEl.textContent = "Wrong!";
+        timer = timer - 10;
+        timerEl.textContent = "Time Left: " + timer;
+    }
+    if (index === questions.length - 1) {
+        //stop increment HOW??????
+    }
     index++;
+    if (index === questions.length) {
+        endQuiz();
+    }
     nextQuestion();
     resultsTimer();
 }
@@ -97,43 +107,45 @@ function nextQuestion() {
 function startQuiz() {
     timerEl.textContent = "Time Left: " + timer;
     nextQuestion();
+    headingEl.textContent = " ";
     startQuizEl.setAttribute("style", "display: none");
     instrucionsEl.setAttribute("style", "display: none");
-
-    //Starts timer
-    var timerInterval = setInterval(function () {
-        timer--;
-        timerEl.textContent = "Time Left: " + timer;
-
-        //Clears timer
-        if (timer <= 0) {
-            clearInterval(timerInterval);
-
-            //Handles scenario when time is up
-            timerEl.textContent = "";
-            quizEl.setAttribute("style", "display: none");
-            headingEl.textContent = "All done!";
-            var initialsEl = document.createElement("p");
-            initialsEl.textContent = "Enter your initials";
-            headingEl.appendChild(initialsEl);
-            var inputEl = document.createElement("input");
-            headingEl.appendChild(inputEl);
-        }
-    }, 1000);
+    highScoreEl.setAttribute("style", "display: none");
+    //Starts timer 
+    timerInterval
+    //Ends timer 
+    if (timer <= 0) {
+        endQuiz;
+    }
 }
 
+
 // Displays results for one second when a choice is clicked
-function resultsTimer(){
-    var resultsTimerInterval = setInterval(function (){
+function resultsTimer() {
+    var resultsTimerInterval = setInterval(function () {
         var displayResultsTimer = 1;
         displayResultsTimer--;
-        if (displayResultsTimer <= 0){
+        if (displayResultsTimer <= 0) {
             clearInterval(resultsTimerInterval);
             resultsEl.textContent = " ";
         }
     }, 1000);
 }
 
+function endQuiz() {
+    clearInterval(timerInterval);
+
+    //Handles scenario when quiz ends
+    timerEl.textContent = " ";
+    quizEl.setAttribute("style", "display: none");
+    headingEl.textContent = "All done!";
+    var initialsEl = document.createElement("p");
+    initialsEl.textContent = "Enter your initials";
+    headingEl.appendChild(initialsEl);
+    var inputEl = document.createElement("input");
+    headingEl.appendChild(inputEl);
+    highScoreEl.setAttribute("style", "display: block");
+}
 
 
 
