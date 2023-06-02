@@ -1,3 +1,4 @@
+var mainEl = document.getElementById("main");
 var startQuizEl = document.querySelector("#start-quiz");
 var timerEl = document.querySelector("#timer");
 var timer = 75;
@@ -91,9 +92,9 @@ function nextQuestion() {
         var newButtonEl = document.createElement('button');
         var choice = questions[index].choices[i];
         newButtonEl.textContent = choice;
-        newButtonEl.classList.add("option")
-        buttonEl.appendChild(newButtonEl)
-        newButtonEl.addEventListener("click", checkQuestion)
+        newButtonEl.classList.add("option");
+        buttonEl.appendChild(newButtonEl);
+        newButtonEl.addEventListener("click", checkQuestion);
     }
 
 }
@@ -138,12 +139,30 @@ function endQuiz() {
     timerEl.textContent = " ";
     quizEl.setAttribute("style", "display: none");
     headingEl.textContent = "All done!";
-    var initialsEl = document.createElement("p");
-    initialsEl.textContent = "Enter your initials";
-    headingEl.appendChild(initialsEl);
+    var saveInitialsDiv = document.createElement = ("div");
+    saveInitialsDiv.classList.add("card");
+    var formEl = document.createElement("form");
+    var initialsListEl = document.createElement("ul");
+    var listEl = document.createElement("li");
+    var inputLabel = document.createElement("label");
     var inputEl = document.createElement("input");
-    headingEl.appendChild(inputEl);
+    inputLabel.textContent = "Enter your initials";
+    listEl.appendChild(inputLabel);
+    listEl.appendChild(inputEl);
+    initialsListEl.appendChild(listEl);
+    formEl.appendChild(initialsListEl);
+    saveInitialsDiv.appendChild(formEl);
+    mainEl.appendChild(saveInitialsDiv );
     highScoreEl.setAttribute("style", "display: block");
+
+    //----------Commentted out code not included-----------
+
+    // headingEl.appendChild(inputEl);
+    // initialsListEl.appendChild(inputEl);
+    // initialsListEl.appendChild(inputLabel);
+    // var initialsEl = document.createElement("p");
+    // initialsEl.textContent = "Enter your initials";
+    // headingEl.appendChild(initialsEl);
 }
 
 
