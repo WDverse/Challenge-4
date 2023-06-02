@@ -1,13 +1,14 @@
-:root{
+:root {
     --hovercolor: rgb(165, 201, 232);
-    --activecolor:  rgb(214, 228, 241);
+    --activecolor: rgb(214, 228, 241);
     --boxshadow: 0px 1px 0px grey;
+    --backgroundcolor: rgb(133, 187, 235);
 }
 
 
-a{
+a {
     text-decoration: none;
-    background-color: rgb(133, 187, 235);
+    background-color: var(--backgroundcolor);
     border: solid 1px black;
     border-radius: 3px;
     box-shadow: var(--boxshadow);
@@ -16,33 +17,45 @@ a{
 }
 
 
-#highscore:hover{
+#highscore:hover {
     background-color: var(--hovercolor);
 }
 
 
-#highscore:active{
+#highscore:active {
     background-color: var(--activecolor);
 }
 
 
 /* sets the property value to the main element */
-main{
+main {
     text-align: center;
 }
 
 
 /* sets the property values to the button elements */
-button{
+button {
     cursor: pointer;
     border-radius: 10px;
     display: inline-block;
-    background-color: rgb(133, 187, 235);
+    background-color: var(--backgroundcolor);
+    border: solid 1px black;
+    box-shadow: var(--boxshadow);
+    font-size: medium;
 }
 
 
+button:hover{
+    background-color: var(--hovercolor);
+}
+
+
+button:active{
+    background-color: var(--activecolor);
+}
+
 /* sets the property value to elements with id="buttons */
-#buttons{
+#buttons {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -50,42 +63,38 @@ button{
 }
 
 
-.option, #start-quiz{
+.option,
+#start-quiz {
     margin-top: 3px;
     text-align: left;
     width: fit-content;
-    border: solid 1px black;
-    box-shadow: var(--boxshadow);
-    font-size: medium;
-}
-
-
-.option:hover{
-    background-color: var(--hovercolor);
-}
-
-
-.option:active{
-    background-color: var(--activecolor) ;
-}
-
-
-#start-quiz:hover{
-    background-color:  var(--hovercolor);
-}
-
-
-#start-quiz:active{
-    background-color: var(--activecolor);
 }
 
 
 /* sets the property value to element with id="instructions */
-#instructions{
+#instructions {
     font-size: 20px;
 }
 
-#results{
+#results {
     font-style: italic;
     color: gray;
+}
+
+.card {
+    /* background-color: var(--backgroundcolor); */
+    width: fit-content;
+    margin: auto;
+}
+
+label{
+    font-size: medium;
+}
+
+li {
+    list-style-type: none;
+}
+
+input {
+    margin-left: 10px;
 }

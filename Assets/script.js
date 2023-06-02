@@ -3,6 +3,7 @@ var startQuizEl = document.querySelector("#start-quiz");
 var timerEl = document.querySelector("#timer");
 var timer = 75;
 var finalScore = 0;
+var finalScoreEl = document.getElementById("final-score");
 var buttonEl = document.getElementById("buttons");
 var questionEl = document.querySelector("#question");
 var instrucionsEl = document.querySelector("#instructions");
@@ -13,9 +14,9 @@ var highScoreEl = document.getElementById("highscore");
 var timerInterval;
 
 
-
 //Adds a click event listener to the "Start Quiz" button
 startQuizEl.addEventListener("click", startQuiz)
+
 
 // Sets an object with properties containing questions, choices, and the answers
 var questions = [
@@ -139,30 +140,27 @@ function endQuiz() {
     timerEl.textContent = " ";
     quizEl.setAttribute("style", "display: none");
     headingEl.textContent = "All done!";
-    var saveInitialsDiv = document.createElement = ("div");
+    finalScoreEl.textContent = "Your final score is: " + finalScore;
+    var saveInitialsDiv = document.createElement("div");
     saveInitialsDiv.classList.add("card");
     var formEl = document.createElement("form");
     var initialsListEl = document.createElement("ul");
     var listEl = document.createElement("li");
     var inputLabel = document.createElement("label");
     var inputEl = document.createElement("input");
+    var submitButton = document.createElement("button");
+    submitButton.textContent = "Submit";
+    submitButton.classList.add("submit");
     inputLabel.textContent = "Enter your initials";
     listEl.appendChild(inputLabel);
     listEl.appendChild(inputEl);
     initialsListEl.appendChild(listEl);
     formEl.appendChild(initialsListEl);
+    formEl.appendChild(submitButton);
     saveInitialsDiv.appendChild(formEl);
-    mainEl.appendChild(saveInitialsDiv );
+    mainEl.appendChild(saveInitialsDiv);
     highScoreEl.setAttribute("style", "display: block");
 
-    //----------Commentted out code not included-----------
-
-    // headingEl.appendChild(inputEl);
-    // initialsListEl.appendChild(inputEl);
-    // initialsListEl.appendChild(inputLabel);
-    // var initialsEl = document.createElement("p");
-    // initialsEl.textContent = "Enter your initials";
-    // headingEl.appendChild(initialsEl);
 }
 
 
