@@ -115,6 +115,8 @@ function startQuiz() {
     timerInterval = setInterval(function () {
         timer--;
         timerEl.textContent = "Time Left: " + timer;
+
+        //Handles scenario when timer runs out
         if (timer <= 0) {
             endQuiz();
         }
@@ -136,6 +138,7 @@ function resultsTimer() {
 }
 
 function endQuiz() {
+    //Ends timer
     clearInterval(timerInterval);
 
     //Handles scenario when quiz ends
@@ -146,11 +149,14 @@ function endQuiz() {
     var saveInitialsDiv = document.createElement("div");
     saveInitialsDiv.classList.add("card");
     var formEl = document.createElement("form");
+    formEl.classList.add("form");
     var initialsListEl = document.createElement("ul");
     var listEl = document.createElement("li");
     var inputLabel = document.createElement("label");
     inputEl = document.createElement("input");
+    inputEl.classList.add("initials");
     submitButtonEl = document.createElement("button");
+    submitButtonEl.classList.add("submit");
     submitButtonEl.textContent = "Submit";
     listEl.appendChild(inputLabel);
     listEl.appendChild(inputEl);
@@ -161,16 +167,37 @@ function endQuiz() {
     saveInitialsDiv.appendChild(formEl);
     mainEl.appendChild(saveInitialsDiv);
     highScoreEl.setAttribute("style", "display: block");
+    
+
+    var submitForm = document.querySelector(".form");
+    var submitButton = document.querySelector(".submit");
+    var initialsInput = document.querySelector(".initials");
+    submitButton.addEventListener("click", function(event){
+        event.preventDefault();
+
+        var userInitials = {
+            initials : initialsInput.value.trim(),
+        }
+
+        localStorage.setItem("userInitials", JSON.stringify(userInitials));
+        
+        function renderHighscores (){
+            var lastScore = JSON.parse(localStorage.getItem(userInitials));
+            if (lastScore !== null){
+                finalScoreEl.setAttribute("style", "display: none");
+                headingEl.setAttribute("style", "display: none");
+                submitForm.setAttribute("style", "display: none");
+                var highScoreHeading = document.createElement("h1");
+                var highScoreList = document.createElement("ol");
+                var userInitialsList = document.createElement("li");
+                highScoreHeading.textContent = "Highscores";
+                userInitialsList.textContent = lastScore.initials + finalScore;
+                highScoreList.appendChild(userInitialsList);
+                saveInitialsDiv.appendChild(highScoreHeading);
+                saveInitialsDiv.appendChild(highScoreList);
+            }
+        }
+        renderHighscores();
+    })
 }
-
-submitButtonEl.classList.add("submit");
-
-var submitButton = document.querySelector(".submit");
-inputEl.classList.add("initials");
-var initialsInput = document.querySelector(".initials");
-
-var userInitials = {
-    initials : initialsInput.value.trim(),
-}
-localStorage.setItem("userInitials", JSON.stringify(userInitials));
 
