@@ -81,23 +81,26 @@ function checkQuestion(event) {
 }
 // Displays new quetion when a button is clicked
 function nextQuestion() {
-    questionEl.textContent = questions[index].title;
-    var previousButtons = document.querySelectorAll(".option")
-    if (previousButtons) {
-        for (var i = 0; i < previousButtons.length; i++) {
-            previousButtons[i].style = "display: none";
-        }
-    }
-    buttonEl.innerHTML = '';
+    if (questions[index]){
 
-    // Displays new buttons with possible answers when a button is clicked
-    for (var i = 0; i < questions[index].choices.length; i++) {
-        var newButtonEl = document.createElement('button');
-        var choice = questions[index].choices[i];
-        newButtonEl.textContent = choice;
-        newButtonEl.classList.add("option");
-        buttonEl.appendChild(newButtonEl);
-        newButtonEl.addEventListener("click", checkQuestion);
+        questionEl.textContent = questions[index].title;
+        var previousButtons = document.querySelectorAll(".option")
+        if (previousButtons) {
+            for (var i = 0; i < previousButtons.length; i++) {
+                previousButtons[i].style = "display: none";
+            }
+        }
+        buttonEl.innerHTML = '';
+    
+        // Displays new buttons with possible answers when a button is clicked
+        for (var i = 0; i < questions[index].choices.length; i++) {
+            var newButtonEl = document.createElement('button');
+            var choice = questions[index].choices[i];
+            newButtonEl.textContent = choice;
+            newButtonEl.classList.add("option");
+            buttonEl.appendChild(newButtonEl);
+            newButtonEl.addEventListener("click", checkQuestion);
+        }
     }
 
 }
