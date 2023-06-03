@@ -187,7 +187,7 @@ function endQuiz() {
         function renderHighscores() {
             var lastScore = JSON.parse(localStorage.getItem("userInitials"));
             // console.log(lastScore);
-            if (lastScore !== " ") {
+            if (lastScore.initials !== "") {
                 finalScoreEl.setAttribute("style", "display: none");
                 headingEl.setAttribute("style", "display: none");
                 submitForm.setAttribute("style", "display: none");
@@ -201,6 +201,12 @@ function endQuiz() {
                 saveInitialsDiv.appendChild(highScoreHeading);
                 saveInitialsDiv.appendChild(highScoreList);
             }
+            // else{
+            //     var errorMessageEl = document.createElement("p");
+            //     errorMessageEl.classList.add("error");
+            //     errorMessageEl.textContent = "Enter your initials";
+            //     saveInitialsDiv.appendChild(errorMessageEl);
+            // }
         }
         renderHighscores();
     })
