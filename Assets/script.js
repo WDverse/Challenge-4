@@ -12,8 +12,7 @@ var quizEl = document.querySelector("#quiz-screen");
 var resultsEl = document.querySelector("#results");
 var highScoreEl = document.getElementById("highscore");
 var timerInterval;
-var inputEl;
-var submitButtonEl;
+
 
 
 //Adds a click event listener to the "Start Quiz" button
