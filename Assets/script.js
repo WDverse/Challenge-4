@@ -80,7 +80,7 @@ function checkQuestion(event) {
 }
 // Displays new quetion when a button is clicked
 function nextQuestion() {
-    if (questions[index]){
+    if (questions[index]) {
 
         questionEl.textContent = questions[index].title;
         var previousButtons = document.querySelectorAll(".option")
@@ -90,7 +90,7 @@ function nextQuestion() {
             }
         }
         buttonEl.innerHTML = '';
-    
+
         // Displays new buttons with possible answers when a button is clicked
         for (var i = 0; i < questions[index].choices.length; i++) {
             var newButtonEl = document.createElement('button');
@@ -186,7 +186,8 @@ function endQuiz() {
 
         function renderHighscores() {
             var lastScore = JSON.parse(localStorage.getItem("userInitials"));
-            if (lastScore !== null) {
+            // console.log(lastScore);
+            if (lastScore !== " ") {
                 finalScoreEl.setAttribute("style", "display: none");
                 headingEl.setAttribute("style", "display: none");
                 submitForm.setAttribute("style", "display: none");
@@ -205,3 +206,4 @@ function endQuiz() {
     })
 }
 
+// highScoreEl.addEventListener("click", renderHighscores);
