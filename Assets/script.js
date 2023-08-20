@@ -10,16 +10,17 @@ var instrucionsEl = document.querySelector("#instructions");
 var headingEl = document.querySelector("#heading");
 var quizEl = document.querySelector("#quiz-screen");
 var resultsEl = document.querySelector("#results");
+var errorMessageEl = document.getElementById("err-msg");
 var highScoreEl = document.getElementById("highscore");
 var timerInterval;
 
 
 
-//Adds a click event listener to the "Start Quiz" button
+//Add a click event listener to the "Start Quiz" button
 startQuizEl.addEventListener("click", startQuiz)
 
 
-// Sets an object with properties containing questions, choices, and the answers
+// Create questions with choices and answers
 var questions = [
     {
         title: 'Commonly used data types DO NOT include:',
@@ -52,20 +53,20 @@ var questions = [
     },
 ];
 
-//Declares a variable which will select the objects in the "questions" array starting with the first object
+//Declare a variable which will select the objects in the "questions" array starting with the first object
 var index = 0
 
-//Prints answer results and deducts 10 seconds when answer is wrong
+//Display results for answer and deduct 10 seconds when answer is wrong
 function checkQuestion(event) {
     console.log(event.target);
     var currentQuestion = questions[index]
 
-    //Handles scenario when answer is correct
+    //Handle scenario when answer is correct
     if (event.target.textContent === currentQuestion.answer) {
         resultsEl.textContent = "Correct!";
         finalScore += 5;
     }
-    //Handles scenario when answer is wrong
+    //Handle scenario when answer is wrong
     if (event.target.textContent !== currentQuestion.answer) {
         resultsEl.textContent = "Wrong!";
         timer = timer - 10;
@@ -78,7 +79,7 @@ function checkQuestion(event) {
     nextQuestion();
     resultsTimer();
 }
-// Displays new quetion when a button is clicked
+// Display new quetion when a button is clicked
 function nextQuestion() {
     if (questions[index]) {
 
@@ -91,7 +92,7 @@ function nextQuestion() {
         }
         buttonEl.innerHTML = '';
 
-        // Displays new buttons with possible answers when a button is clicked
+        // Display new buttons with possible answers when a button is clicked
         for (var i = 0; i < questions[index].choices.length; i++) {
             var newButtonEl = document.createElement('button');
             var choice = questions[index].choices[i];
@@ -105,7 +106,7 @@ function nextQuestion() {
 }
 
 
-//Removes "Start Quiz" button and instuctions when "Start Quiz" is clicked
+//Remove "Start Quiz" button and instuctions when "Start Quiz" is clicked
 function startQuiz() {
     timerEl.textContent = "Time Left: " + timer;
     nextQuestion();
@@ -113,12 +114,12 @@ function startQuiz() {
     startQuizEl.setAttribute("style", "display: none");
     instrucionsEl.setAttribute("style", "display: none");
     highScoreEl.setAttribute("style", "display: none");
-    //Starts timer 
+    //Start timer 
     timerInterval = setInterval(function () {
         timer--;
         timerEl.textContent = "Time Left: " + timer;
 
-        //Handles scenario when timer runs out
+        //Handle scenario when timer runs out
         if (timer <= 0) {
             endQuiz();
         }
@@ -127,7 +128,7 @@ function startQuiz() {
 }
 
 
-// Displays results for one second when a choice is clicked
+// Display results for one second when a choice is clicked
 function resultsTimer() {
     var resultsTimerInterval = setInterval(function () {
         var displayResultsTimer = 1;
@@ -140,10 +141,10 @@ function resultsTimer() {
 }
 
 function endQuiz() {
-    //Ends timer
+    //End timer
     clearInterval(timerInterval);
 
-    //Handles scenario when quiz ends
+    //Handle scenario when quiz ends
     timerEl.textContent = " ";
     quizEl.setAttribute("style", "display: none");
     headingEl.textContent = "All done!";
@@ -182,12 +183,12 @@ function endQuiz() {
             initials: initialsInput.value.trim(),
         }
 
-        localStorage.setItem("userInitials", JSON.stringify(userInitials));
-
+        localStorage.setItem("userInitials", JSON.stringify(userInitials)); // Save initials to local storage
+        // Handle scenario when function is called
         function renderHighscores() {
             var lastScore = JSON.parse(localStorage.getItem("userInitials"));
-            // console.log(lastScore);
             if (lastScore.initials !== "") {
+                errorMessageEl.setAttribute("style", "display: none");
                 finalScoreEl.setAttribute("style", "display: none");
                 headingEl.setAttribute("style", "display: none");
                 submitForm.setAttribute("style", "display: none");
@@ -201,15 +202,12 @@ function endQuiz() {
                 saveInitialsDiv.appendChild(highScoreHeading);
                 saveInitialsDiv.appendChild(highScoreList);
             }
-            // else{
-            //     var errorMessageEl = document.createElement("p");
-            //     errorMessageEl.classList.add("error");
-            //     errorMessageEl.textContent = "Enter your initials";
-            //     saveInitialsDiv.appendChild(errorMessageEl);
-            // }
+            // Handle scenario when there are no initials
+            else {
+                errorMessageEl.classList.add("error");
+                errorMessageEl.textContent = "Please enter your initials!";
+            }
         }
-        renderHighscores();
+        renderHighscores(); // Call renderHighscores function
     })
 }
-
-// highScoreEl.addEventListener("click", renderHighscores);

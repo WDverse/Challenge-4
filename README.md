@@ -17,15 +17,21 @@ N/A
 
 
 To use this webpage, click on the "Start Quiz" button. When the buttton is clicked, the questions and possible answers are displayed, and a 75-seconds timer starts. Select an answer to move to the next question.
-It should be noted the the webpage does not work as intended due to incompletion of the code.
+The total score is displayed tt the end of the quiz. Enter your initials and click "Submit" to save your score.
 
 The following image shows the web application's appearance and functionality:
-![The Code Quiz Challenge webpage includes a heading, a timer, instructions and a button.](./Assets/images/screenshot.png)
+Start Page:
+![Start Page.](./Assets/images/start.png)  
+
+Quiz Page: 
+![Quiz Page.](./Assets/images/quiz.png)  
+
+Highscore Page:
+![Highscore Page.](./Assets/images/highscore.png)
 
 ## Credits
 
-
-N/A
+AskBCS Tutors
 
 
 ## License
